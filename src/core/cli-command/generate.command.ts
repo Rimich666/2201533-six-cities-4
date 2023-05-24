@@ -2,7 +2,7 @@ import got from 'got';
 import { mkdir, open } from 'node:fs/promises';
 import { CliCommandInterface } from './cli-command.interface.js';
 import OfferGenerator from '../../modules/mock-data-rows-generator/offer-generator.js';
-import {BIG_SIZE, BIGGEST_INT_SIZE, EMPTY_BIGGEST_INT} from '../cli-consts/consts.js';
+import {BIG_SIZE, BIGGEST_INT_SIZE, BUFFER_SIZE, EMPTY_BIGGEST_INT} from '../cli-consts/consts.js';
 import path from 'node:path';
 import {existsSync, close, fstatSync} from 'node:fs';
 import {MockData, MockUsersData} from '../../types/mock-data.type.js';
@@ -49,11 +49,10 @@ export default class GenerateCommand implements CliCommandInterface {
     try {
       let row = 0;
       let size = 0;
-      const tsvFileWriter = new TSVFileWriter(fileHandle);
+      const tsvFileWriter = new TSVFileWriter(fileHandle, BUFFER_SIZE);
       console.log(chalk.greenBright('Создание строк фейковых данных и запись в файл ".tsv"'));
       output.write('\u001B[?25l');
-      await fileHandle.write('',0);
-      await tsvFileWriter.write(`${EMPTY_BIGGEST_INT}\t${EMPTY_BIGGEST_INT}`);
+      await fileHandle.write(`${EMPTY_BIGGEST_INT}\t${EMPTY_BIGGEST_INT}\n`,0);
       let i = 0;
       for (i; i < this.usersData.emails.length; i++) {
         await tsvFileWriter.write(userGeneratorString.generate());

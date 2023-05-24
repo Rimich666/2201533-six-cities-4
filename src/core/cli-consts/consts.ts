@@ -66,3 +66,4 @@ export const Parameters = {
 
 export const BIGGEST_INT_SIZE = (2 ** 128).toString().length;
 export const EMPTY_BIGGEST_INT = new Array(BIGGEST_INT_SIZE).fill('*').join('');
+export const BUFFER_SIZE = (BIGGEST_INT_SIZE + 1) * 2;

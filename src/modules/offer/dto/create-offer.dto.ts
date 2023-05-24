@@ -16,7 +16,7 @@ export default class CreateOfferDto {
   public maxAdults!: number;
   public price!: number;
   public goods!: string[];
-  public host!: number;
+  public host!: string;
   public commentsCount!: number;
   public location!: MapLocation;
 }
