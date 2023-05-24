@@ -1,4 +1,4 @@
-import {defaultClasses, modelOptions, prop, Ref} from '@typegoose/typegoose';
+import {defaultClasses, getModelForClass, modelOptions, prop, Ref} from '@typegoose/typegoose';
 import {entitiesName} from '../../types/entities-name.enum.js';
 import {OfferType} from '../../types/offer-type.enum.js';
 import {Goods} from '../../types/goods.enum.js';
@@ -60,5 +60,6 @@ export class OfferEntity extends defaultClasses.TimeStamps {
 
   @prop({required: true, _id: false})
   public location!: LocationEntity;
-
 }
+
+export const OfferModel = getModelForClass(OfferEntity);
