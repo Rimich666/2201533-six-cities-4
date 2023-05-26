@@ -65,7 +65,7 @@ export const configRestSchema = convict<RestSchema>({
     default: 5
   },
   RETRY_TIMEOUT: {
-    doc: ' Шnterval between retries to connect to the database',
+    doc: ' Interval between retries to connect to the database',
     format: Number,
     env: 'DB_CONNECT_RETRY_TIMEOUT',
     default: 1000

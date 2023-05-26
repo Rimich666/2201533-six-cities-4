@@ -25,6 +25,7 @@ export const NumberFields = {
   Price: 'Price',
   Duration: 'Duration',
   CommentCount: 'CommentCount',
+  PasswordLength: 'PasswordLength'
 };
 
 export const Min = {

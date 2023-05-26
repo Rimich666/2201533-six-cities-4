@@ -5,27 +5,18 @@ import {
   getRandomBoolean,
   getRandomItem,
   getRandomItems,
-  makeFakeLocation
+  makeFakeLocation,
+  getRandomizeParam
 } from '../../core/helpers/random.js';
 import {cities} from '../../types/cities.enum.js';
 import {
   BASE_DATE,
   BoolkinString,
-  Max,
-  Min,
   NumberFields,
-  Precision,
   UNIT_DURATION
 } from '../../core/cli-consts/consts.js';
 import {OfferType} from '../../types/offer-type.enum.js';
 import {Goods} from '../../types/goods.enum.js';
-
-const getRandomizeParam = (key: string) =>
-  ([
-    Min[key as keyof typeof Min] || Min.Default,
-    Max[key as keyof typeof Max] || Max.Default,
-    Precision[key as keyof typeof Precision] || Precision.Default,
-  ] as [number, number, number]);
 
 export default class OfferGenerator implements DataGeneratorInterface {
   constructor(private readonly mockData: MockData) {}
