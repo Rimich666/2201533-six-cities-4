@@ -1,6 +1,6 @@
 import {DataGeneratorInterface} from './data-generator.interface.js';
 import {MockUsersData} from '../../types/mock-data.type.js';
-import {getRandomItem} from '../../core/helpers/random.js';
+import {generatePassword, getRandomItem} from '../../core/helpers/random.js';
 import {UserType} from '../../types/user.type.js';
 
 export default class UserGenerator implements DataGeneratorInterface {
@@ -13,7 +13,8 @@ export default class UserGenerator implements DataGeneratorInterface {
     const name = getRandomItem(this.mockData.users);
     const avatar = getRandomItem(this.mockData.avatars);
     const type = getRandomItem(Object.values(UserType));
+    const password = generatePassword();
     this.index ++;
-    return [[email, avatar, name, type].join('\t')].join('\n');
+    return [[email, avatar, name, type, password].join('\t')].join('\n');
   }
 }
