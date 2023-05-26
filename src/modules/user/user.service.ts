@@ -35,4 +35,8 @@ export default class UserService implements UserServiceInterface {
 
     return this.create(dto, salt);
   }
+
+  public async findById(userId: string): Promise<DocumentType<UserEntity> | null> {
+    return this.userModel.findById(userId).exec();
+  }
 }
