@@ -11,9 +11,7 @@ export default class CityService implements CityServiceInterface {
   constructor(
     @inject(AppComponent.LoggerInterface) private readonly logger: LoggerInterface,
     @inject(AppComponent.CityModel) private readonly cityModel: types.ModelType<CityEntity>
-  ) {
-
-  }
+  ) {}
 
   public async create(dto:CreateCityDto): Promise<DocumentType<CityEntity>> {
     const city = new CityEntity(dto);

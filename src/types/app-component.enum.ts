@@ -8,5 +8,6 @@ export const AppComponent = {
   CityServiceInterface: Symbol.for('CityServiceInterface'),
   UserModel: Symbol.for('UserModel'),
   CityModel: Symbol.for('CityModel'),
-  OfferModel: Symbol.for('OfferModel')
+  OfferModel: Symbol.for('OfferModel'),
+
 } as const;

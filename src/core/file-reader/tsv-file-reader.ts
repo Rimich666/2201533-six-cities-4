@@ -58,7 +58,7 @@ export default class TSVFileReader extends EventEmitter implements FileReaderInt
       goods: goods.split(';').map((good) =>
         Goods[good.split(' ').reduce((acc, word) =>
           acc.concat(word[0].toUpperCase().concat(word.substring(1)))) as keyof typeof Goods]),
-      host: parseInt(host, 10),
+      host: host,
       commentsCount: parseInt(commentsCount, 10),
       location: {latitude: parseFloat(latitude), longitude: parseFloat(longitude)}
     };
