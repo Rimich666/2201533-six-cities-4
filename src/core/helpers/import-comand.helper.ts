@@ -17,7 +17,7 @@ export type ImportProgressType = {
 }
 
 const WIDTH = 30;
-const REVERT_ROWS_COUNT = -2;
+const REVERT_ROWS_COUNT = -3;
 export function createProgressImport (): ImportProgressType {
   let progressLoad: ProgressBar;
   let progressRows: ProgressBar;
@@ -28,7 +28,7 @@ export function createProgressImport (): ImportProgressType {
   let message = '';
   let rowsCount = 0;
   let size = 0;
-  let msgType: keyof typeof log = 'info';
+  // let msgType: keyof typeof log = 'info';
   const setParam = (sz: number, rc: number) => {
     size = sz;
     rowsCount = rc;
@@ -39,7 +39,10 @@ export function createProgressImport (): ImportProgressType {
     if (rowNumber > 0) {
       output.moveCursor(0, REVERT_ROWS_COUNT);
     }
-    log[msgType](message);
+    // log[msgType](message);
+    output.write(message);
+    output.clearLine(1);
+    output.write('\n');
     output.write(`${barRows} Загружено: ${formatInt(rowNumber)} строк из ${rowsCount}.`);
     output.clearLine(1);
     output.write('\n');
@@ -55,8 +58,8 @@ export function createProgressImport (): ImportProgressType {
     barBytes = progressLoad.getProgress(loaded);
     outputProgress();
   };
-  const setMessage = (type: string, msg: string) => {
-    msgType = type as keyof typeof log;
+  const setMessage = (_type: string, msg: string) => {
+    // msgType = type as keyof typeof log;
     message = msg;
     outputProgress();
   };
